@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { useEffect } from 'react';
 import {
   Img,
   Text,
@@ -29,27 +28,11 @@ const dropDownOptions = [
 ];
 
 export default function WebPLPWithFilterPage() {
-  const [menuPortalTarget, setMenuPortalTarget] = useState(null);
-
-  useEffect(() => {
-    // Access the DOM element only on the client-side
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      setMenuPortalTarget(document.getElementById('menuPortalTarget'));
-    }
-  }, []);
-
   const [isFilterVisible, setIsFilterVisible] = useState(true);
 
   const handleFilterClick = () => {
     setIsFilterVisible(!isFilterVisible);
   };
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      const target = document.getElementById('menuPortalTarget');
-      setMenuPortalTarget(target);
-    }
-  }, []);
 
   return (
     <div className="flex w-full flex-col items-center gap-[58px] bg-white-A700 sm:gap-[29px]">
@@ -106,7 +89,7 @@ export default function WebPLPWithFilterPage() {
                   </div>
                 </div>
                 <SelectBox
-                  menuPortalTarget={document.getElementById(`menuPortalTarget`)}
+                  menuPortalTarget={document.getElementById("menuPortalTarget")}
                   shape="square"
                   indicator={
                     <Img
